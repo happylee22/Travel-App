@@ -18,11 +18,18 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
   },
+  emptyText: {
+    textAlign: "center",
+    marginTop: 20,
+    fontSize: 12,
+    color: "rgba*(0, 0, 0, 0.5)",
+  },
 });
 
 export const ArraysOfCategories = [
   "All",
   "Popular",
+  "Historical",
   "Recommended",
   "Most Viewed",
   "Most Visited",

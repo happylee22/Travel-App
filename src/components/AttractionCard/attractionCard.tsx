@@ -1,5 +1,5 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./atractionStyles";
 
 type Props = {
@@ -7,10 +7,17 @@ type Props = {
   title: string;
   subTitle: string;
   style?: any;
+  onPress?: () => void;
 };
-const AttractionCard = ({ imageSrc, title, subTitle, style }: Props) => {
+const AttractionCard = ({
+  imageSrc,
+  title,
+  subTitle,
+  style,
+  onPress,
+}: Props) => {
   return (
-    <View style={[styles.Card, style]}>
+    <TouchableOpacity style={[styles.Card, style]} onPress={onPress}>
       <Image source={{ uri: imageSrc }} style={styles.image} />
       <Text style={styles.title}>{title}</Text>
       <View style={styles.subView}>
@@ -21,7 +28,7 @@ const AttractionCard = ({ imageSrc, title, subTitle, style }: Props) => {
         />
         <Text style={styles.subTitle}>{subTitle}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -1,5 +1,6 @@
+import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import AttractionCard from "../AttractionCard/attractionCard";
 import Categories from "../Categories/categories";
 import jsonData from "../data/attraction.json";
@@ -7,15 +8,27 @@ import Title from "../title/title";
 import { ArraysOfCategories, styles } from "./styles";
 
 const Home = () => {
+  const router = useRouter();
   const [selectCategory, setSelectCategory] = useState<string>("All");
   const [data, setData] = useState<any>([]);
   useEffect(() => {
     setData(jsonData);
   }, []);
+  useEffect(() => {
+    if (selectCategory === "All") {
+      setData(jsonData);
+    } else {
+      const filteredData = jsonData.filter((item: any) =>
+        item.categories.includes(selectCategory),
+      );
+      setData(filteredData);
+    }
+  }, [selectCategory]);
   return (
     <View style={styles.container}>
       <FlatList
         data={data}
+        ListEmptyComponent={<Text style={styles.emptyText}>No Item found</Text>}
         ListHeaderComponent={
           <View>
             <Title text="Where Do" style={{ fontWeight: "normal" }} />
@@ -38,6 +51,7 @@ const Home = () => {
             imageSrc={item.images?.length ? item.images[0] : null}
             title={item.name}
             subTitle={item.city}
+            onPress={() => router.push(`/${item.id}`)}
           />
         )}
       />

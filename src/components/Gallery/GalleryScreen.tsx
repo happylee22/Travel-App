@@ -1,11 +1,18 @@
-import { Text, View } from "react-native";
+import jsonData from "@/components/data/attraction.json";
+import { useLocalSearchParams } from "expo-router";
+import { StyleSheet, Text, View } from "react-native";
 
 const GalleryScreen = () => {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const item = jsonData.find((entry) => entry.id.toString() === id);
+  console.log("item", item);
   return (
     <View>
-      <Text>GalleryScreen</Text>
+      <Text>{item?.name}</Text>
     </View>
   );
 };
 
 export default GalleryScreen;
+
+const styles = StyleSheet.create({});

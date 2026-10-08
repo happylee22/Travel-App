@@ -28,11 +28,9 @@ export const styles = StyleSheet.create({
 
 export const ArraysOfCategories = [
   "All",
-  "Popular",
+  "Most Visited",
   "Historical",
   "Recommended",
-  "Most Viewed",
-  "Most Visited",
-  "Most Liked",
-  "Most Commented",
+  "Trending",
+  "Popular",
 ];

@@ -1,19 +1,36 @@
 import jsonData from "@/components/data/attraction.json";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { Image, ImageBackground, Text, View } from "react-native";
+import { Image, ImageBackground, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonsIcons from "../Buttons/buttons";
 import { styles } from "./detailsStyles";
 const AttractionDetails = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const placeholder = { uri: "https://picsum.photos/400/300" };
   const item = jsonData.find((entry) => entry.id.toString() === id);
+  // console.log("item", item);
   const mainImage = item?.images?.[0];
-  const imageSource = mainImage ? { uri: mainImage } : undefined;
+  const imageSource = mainImage ? { uri: mainImage } : placeholder;
+  //Sliced mages
+  const slicedImages = item?.images?.length ? item.images.slice(0, 5) : [];
+  const diffImages = (item?.images?.length ?? 0) - slicedImages.length;
+  console.log(item?.images?.length);
+  //navigation
   const router = useRouter();
   const handleBackPress = () => {
     router.back();
   };
-  const placeholder = { uri: "https://picsum.photos/400/300" };
+  //gallery route
+  const handleGalleryPress = () => {
+    console.log("going to", `/gallery/${id}`);
+
+    router.push({
+      pathname: "/gallery",
+      params: {
+        id: id,
+      },
+    });
+  };
   if (!item) {
     return (
       <SafeAreaView style={styles.container}>
@@ -30,19 +47,20 @@ const AttractionDetails = () => {
         resizeMode="cover"
         imageStyle={{ borderRadius: 20 }}
       >
-        <View style={styles.parentView}>
+        <View style={styles.header}>
           <ButtonsIcons icon="arrow-left" handleBackPress={handleBackPress} />
           <ButtonsIcons icon="share" />
         </View>
-        <View style={styles.footer}>
-          {item?.images?.length ? (
-            item.images.map((img) => (
-              <Image key={img} source={{ uri: img }} style={styles.miniImage} />
-            ))
-          ) : (
-            <Image source={placeholder} style={styles.miniImage} />
-          )}
-        </View>
+        <Pressable style={styles.footer} onPress={handleGalleryPress}>
+          {slicedImages.map((image, index) => (
+            <View key={index}>
+              <Image source={{ uri: image }} style={styles.miniImage} />
+              {diffImages > 0 && index === slicedImages.length - 1 ? (
+                <Text style={styles.moreImages}>{`+${diffImages}`}</Text>
+              ) : null}
+            </View>
+          ))}
+        </Pressable>
       </ImageBackground>
     </SafeAreaView>
   );

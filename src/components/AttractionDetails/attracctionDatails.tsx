@@ -3,11 +3,13 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { Image, ImageBackground, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonsIcons from "../Buttons/buttons";
+import TextSection from "../MiddleSectionText/textSection";
 import { styles } from "./detailsStyles";
 const AttractionDetails = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const placeholder = { uri: "https://picsum.photos/400/300" };
   const item = jsonData.find((entry) => entry.id.toString() === id);
+  console.log(item?.address);
   // console.log("item", item);
   const mainImage = item?.images?.[0];
   const imageSource = mainImage ? { uri: mainImage } : placeholder;
@@ -22,9 +24,8 @@ const AttractionDetails = () => {
   };
   //gallery route
   const handleGalleryPress = () => {
-    console.log("going to", `/gallery/${id}`);
-
     router.push({
+      //@ts-ignore
       pathname: "/gallery",
       params: {
         id: id,
@@ -56,12 +57,19 @@ const AttractionDetails = () => {
             <View key={index}>
               <Image source={{ uri: image }} style={styles.miniImage} />
               {diffImages > 0 && index === slicedImages.length - 1 ? (
-                <Text style={styles.moreImages}>{`+${diffImages}`}</Text>
+                <View style={styles.moreImagesContainer}>
+                  <Text style={styles.moreImages}>{`+${diffImages}`}</Text>
+                </View>
               ) : null}
             </View>
           ))}
         </Pressable>
       </ImageBackground>
+      <TextSection
+        title={item.name}
+        price={item.entry_price}
+        city={item.city}
+      />
     </SafeAreaView>
   );
 };

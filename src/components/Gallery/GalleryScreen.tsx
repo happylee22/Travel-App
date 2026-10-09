@@ -9,6 +9,7 @@ const GalleryScreen = () => {
   return (
     <View>
       <Text>{item?.name}</Text>
+      <Text>{item?.categories}</Text>
     </View>
   );
 };

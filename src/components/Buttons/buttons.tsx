@@ -1,19 +1,21 @@
 import { Feather } from "@expo/vector-icons";
 import { ComponentProps } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, StyleProp, StyleSheet, ViewStyle } from "react-native";
 
 type Props = {
   handleBackPress?: () => void;
-
+  style?: StyleProp<ViewStyle>;
   icon?: ComponentProps<typeof Feather>["name"];
 };
-const ButtonsIcons = ({ handleBackPress, icon }: Props) => {
+const ButtonsIcons = ({ handleBackPress, icon, style }: Props) => {
   return (
-    <View>
-      <Pressable style={styles.header} onPress={handleBackPress} hitSlop={8}>
-        <Feather name={icon} size={20} color="black" style={styles.backIcon} />
-      </Pressable>
-    </View>
+    <Pressable
+      style={[styles.header, style]}
+      onPress={handleBackPress}
+      hitSlop={8}
+    >
+      <Feather name={icon} size={20} color="black" style={styles.backIcon} />
+    </Pressable>
   );
 };
 

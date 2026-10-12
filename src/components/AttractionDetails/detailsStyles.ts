@@ -54,9 +54,20 @@ export const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
-  mapView: { borderRadius: 10, overflow: "hidden", marginBottom: 80 },
+  mapView: {
+    borderRadius: 10,
+    overflow: "hidden",
+  },
   map: {
     width: "100%",
     height: 200,
+  },
+  mapText: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#4681A3",
+    textAlign: "center",
+    padding: 2,
+    marginBottom: 40,
   },
 });

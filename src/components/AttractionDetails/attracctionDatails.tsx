@@ -48,6 +48,16 @@ const AttractionDetails = () => {
       },
     });
   };
+  const handleMapPress = () => {
+    router.push({
+      //@ts-ignore
+      pathname: "/mapScreen",
+      params: {
+        id: id,
+      },
+    });
+  };
+
   if (!item) {
     return (
       <SafeAreaView style={styles.container}>
@@ -99,6 +109,9 @@ const AttractionDetails = () => {
             />
           </MapView>
         </View>
+        <Text style={styles.mapText} onPress={handleMapPress}>
+          Show Full Screen Map
+        </Text>
       </ScrollView>
     </SafeAreaView>
   );

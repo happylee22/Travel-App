@@ -11,12 +11,12 @@ export const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 400,
-    marginTop: 24,
+    marginTop: 40,
     borderRadius: 20,
   },
   backContainer: {
     position: "absolute",
-    top: 37,
+    top: 50,
     left: 34,
     zIndex: 10,
     elevation: 5,

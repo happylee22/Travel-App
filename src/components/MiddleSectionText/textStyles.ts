@@ -2,14 +2,14 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   headerContainer: {
-    marginVertical: 40,
+    marginVertical: 18,
     flexDirection: "row",
     justifyContent: "space-between",
   },
 
   text: {
     color: "#000",
-    fontSize: 20,
+    fontSize: 30,
   },
   city: {
     color: "#000",

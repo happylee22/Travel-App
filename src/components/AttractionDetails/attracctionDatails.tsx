@@ -1,6 +1,14 @@
 import jsonData from "@/components/data/attraction.json";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { Image, ImageBackground, Pressable, Text, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
+import MapView, { Marker } from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonsIcons from "../Buttons/buttons";
 import TextSection from "../MiddleSectionText/textSection";
@@ -17,6 +25,14 @@ const AttractionDetails = () => {
   const slicedImages = item?.images?.length ? item.images.slice(0, 5) : [];
   const diffImages = (item?.images?.length ?? 0) - slicedImages.length;
   console.log(item?.images?.length);
+  console.log("item=>", item);
+  const cords = {
+    latitude: item?.coordinates?.lat ?? 37.78825,
+    longitude: item?.coordinates?.lon ?? -122.4324,
+    latitudeDelta: 0.009,
+    longitudeDelta: 0.009,
+  };
+
   //navigation
   const router = useRouter();
   const handleBackPress = () => {
@@ -42,34 +58,48 @@ const AttractionDetails = () => {
 
   return (
     <SafeAreaView style={{ margin: 32 }}>
-      <ImageBackground
-        source={imageSource}
-        style={styles.background}
-        resizeMode="cover"
-        imageStyle={{ borderRadius: 20 }}
-      >
-        <View style={styles.header}>
-          <ButtonsIcons icon="arrow-left" handleBackPress={handleBackPress} />
-          <ButtonsIcons icon="share" />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ImageBackground
+          source={imageSource}
+          style={styles.background}
+          resizeMode="cover"
+          imageStyle={{ borderRadius: 20 }}
+        >
+          <View style={styles.header}>
+            <ButtonsIcons icon="arrow-left" handleBackPress={handleBackPress} />
+            <ButtonsIcons icon="share" />
+          </View>
+          <Pressable style={styles.footer} onPress={handleGalleryPress}>
+            {slicedImages.map((image, index) => (
+              <View key={index}>
+                <Image source={{ uri: image }} style={styles.miniImage} />
+                {diffImages > 0 && index === slicedImages.length - 1 ? (
+                  <View style={styles.moreImagesContainer}>
+                    <Text style={styles.moreImages}>{`+${diffImages}`}</Text>
+                  </View>
+                ) : null}
+              </View>
+            ))}
+          </Pressable>
+        </ImageBackground>
+        <TextSection
+          title={item.name}
+          price={item.entry_price}
+          city={item.city}
+        />
+        <View style={styles.mapView}>
+          <MapView style={styles.map} initialRegion={cords}>
+            <Marker
+              coordinate={{
+                latitude: cords.latitude,
+                longitude: cords.longitude,
+              }}
+              title={item.name}
+              // image={{ uri: "custom_pin" }}
+            />
+          </MapView>
         </View>
-        <Pressable style={styles.footer} onPress={handleGalleryPress}>
-          {slicedImages.map((image, index) => (
-            <View key={index}>
-              <Image source={{ uri: image }} style={styles.miniImage} />
-              {diffImages > 0 && index === slicedImages.length - 1 ? (
-                <View style={styles.moreImagesContainer}>
-                  <Text style={styles.moreImages}>{`+${diffImages}`}</Text>
-                </View>
-              ) : null}
-            </View>
-          ))}
-        </Pressable>
-      </ImageBackground>
-      <TextSection
-        title={item.name}
-        price={item.entry_price}
-        city={item.city}
-      />
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -30,6 +30,7 @@ const GalleryScreen = () => {
         icon="arrow-left"
         handleBackPress={handleBackPress}
       />
+      <Text>Hey</Text>
     </View>
   );
 };

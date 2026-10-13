@@ -1,4 +1,5 @@
 import jsonData from "@/components/data/attraction.json";
+import { shareAttraction } from "@/utils/shareAttraction";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import {
   Image,
@@ -13,6 +14,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonsIcons from "../Buttons/buttons";
 import TextSection from "../MiddleSectionText/textSection";
 import { styles } from "./detailsStyles";
+
 const AttractionDetails = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const placeholder = { uri: "https://picsum.photos/400/300" };
@@ -77,7 +79,10 @@ const AttractionDetails = () => {
         >
           <View style={styles.header}>
             <ButtonsIcons icon="arrow-left" handleBackPress={handleBackPress} />
-            <ButtonsIcons icon="share" />
+            <ButtonsIcons
+              icon="share"
+              handleBackPress={() => shareAttraction(item)}
+            />
           </View>
           <Pressable style={styles.footer} onPress={handleGalleryPress}>
             {slicedImages.map((image, index) => (

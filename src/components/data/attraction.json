@@ -88,5 +88,117 @@
       "lat": 43.723,
       "lon": 10.3966
     }
+  },
+  {
+    "id": 5,
+    "name": "Lekki Conservation Centre",
+    "city": "Lagos",
+    "country": "Nigeria",
+    "entry_price": "$6",
+    "address": "Lekki Conservation Centre, Lekki, Lagos, Nigeria",
+    "opening_time": "8:00 AM",
+    "closing_time": "05:00 PM",
+    "categories": ["Recommended", "Nature"],
+    "images": [
+      "https://i.pinimg.com/1200x/fa/8a/35/fa8a35021c6cfa45f20297969db739c6.jpg",
+      "https://i.pinimg.com/736x/bf/01/d6/bf01d60cd5135adbf67047be5a9353b0.jpg",
+      "https://i.pinimg.com/1200x/e4/e3/72/e4e372b3e1bce93511ffab1177707345.jpg",
+      "https://i.pinimg.com/1200x/69/ff/d6/69ffd6546b7cc8183e53a342c9f8d978.jpg",
+      "https://i.pinimg.com/1200x/86/d8/de/86d8de0d575466381eaf01f823d8e896.jpg"
+    ],
+    "coordinates": { "lat": 6.4382, "lon": 3.5352 }
+  },
+  {
+    "id": 6,
+    "name": "Christ the Redeemer",
+    "city": "Rio de Janeiro",
+    "country": "Brazil",
+    "entry_price": "$22",
+    "address": "Parque Nacional da Tijuca, Rio de Janeiro, Brazil",
+    "opening_time": "8:00 AM",
+    "closing_time": "07:00 PM",
+    "categories": ["Popular", "Landmark"],
+    "images": [
+      "https://i.pinimg.com/736x/37/3d/d6/373dd6935d1cdaf08b5bae1d0663fd13.jpg",
+      "https://i.pinimg.com/736x/33/84/7a/33847a1d94ff61af4fb743e039e5ce82.jpg",
+      "https://i.pinimg.com/736x/df/dc/ec/dfdcec43c3bf3accc3fd5146fe236296.jpg",
+      "https://i.pinimg.com/736x/a1/2a/a7/a12aa7d73ca570ce5353dab3e4b0f023.jpg"
+    ],
+    "coordinates": { "lat": -22.9519, "lon": -43.2105 }
+  },
+  {
+    "id": 7,
+    "name": "Sydney Opera House",
+    "city": "Sydney",
+    "country": "Australia",
+    "entry_price": "$35",
+    "address": "Bennelong Point, Sydney NSW 2000, Australia",
+    "opening_time": "9:00 AM",
+    "closing_time": "08:00 PM",
+    "categories": ["Recommended", "Landmark"],
+    "images": [
+      "https://i.pinimg.com/736x/35/ea/3c/35ea3c8c04de2c8dc36ff5e01cdbfb67.jpg",
+      "https://i.pinimg.com/1200x/ba/3c/e5/ba3ce5aa0d97ca1c70f93439695ec1b5.jpg",
+      "https://i.pinimg.com/736x/bd/72/ee/bd72ee220ac0fde2342bb56d749ac029.jpg",
+      "https://i.pinimg.com/1200x/a4/1f/40/a41f406a773493b484a7a625ae6c0018.jpg"
+    ],
+    "coordinates": { "lat": -33.8568, "lon": 151.2153 }
+  },
+  {
+    "id": 8,
+    "name": "Pyramids of Giza",
+    "city": "Giza",
+    "country": "Egypt",
+    "entry_price": "$12",
+    "address": "Al Haram, Giza Governorate, Egypt",
+    "opening_time": "8:00 AM",
+    "closing_time": "05:00 PM",
+    "categories": ["Popular", "Historical"],
+    "images": [
+      "https://i.pinimg.com/1200x/95/35/69/9535693b5e9f9008d9f1e8fcf3733d79.jpg",
+      "https://i.pinimg.com/736x/9c/e9/35/9ce935897f1f1d974126f59924e7da87.jpg",
+      "https://i.pinimg.com/1200x/c4/8c/f9/c48cf90f14286ccfd428f44320a8bd5e.jpg",
+      "https://i.pinimg.com/736x/64/36/10/64361068501abe8f3e658f5d998dded5.jpg",
+      "https://i.pinimg.com/736x/9f/7a/53/9f7a5333544becd0d70b5bbfc7b9ffd1.jpg"
+    ],
+    "coordinates": { "lat": 29.9792, "lon": 31.1342 }
+  },
+  {
+    "id": 9,
+    "name": "Statue of Liberty",
+    "city": "New York",
+    "country": "United States",
+    "entry_price": "$25",
+    "address": "Liberty Island, New York, NY 10004, USA",
+    "opening_time": "8:30 AM",
+    "closing_time": "05:00 PM",
+    "categories": ["Popular", "Historical"],
+    "images": [
+      "https://i.pinimg.com/736x/cc/c3/48/ccc3488b140ab81f94edf4a7927f0609.jpg",
+      "https://i.pinimg.com/1200x/fd/bf/2d/fdbf2db179086eff50ea5f81529ccecb.jpg",
+      "https://i.pinimg.com/1200x/d8/b8/8d/d8b88d21f96c36e334c4b4d6db032d2e.jpg",
+      "https://i.pinimg.com/1200x/d9/f2/e5/d9f2e5a3887886f11b830f81d2b1a13d.jpg",
+      "https://i.pinimg.com/1200x/e0/04/45/e004450864a613ffa03ce7c7bc0f3714.jpg"
+    ],
+    "coordinates": { "lat": 40.6892, "lon": -74.0445 }
+  },
+  {
+    "id": 10,
+    "name": "Machu Picchu",
+    "city": "Cusco",
+    "country": "Peru",
+    "entry_price": "$50",
+    "address": "Machu Picchu, Cusco Region, Peru",
+    "opening_time": "6:00 AM",
+    "closing_time": "05:30 PM",
+    "categories": ["Recommended", "Historical"],
+    "images": [
+      "https://i.pinimg.com/736x/87/4b/c2/874bc2aaa1c67614cc965b0556363cad.jpg",
+      "https://i.pinimg.com/736x/d0/08/13/d008134ef5a7002d5b74de53bfe5b866.jpg",
+      "https://i.pinimg.com/736x/60/be/e6/60bee625f4e757aa6dfae94bd1c069c4.jpg",
+      "https://i.pinimg.com/736x/d3/ea/72/d3ea72d858b8bf1cf410dbb0c81b9b75.jpg",
+      "https://i.pinimg.com/1200x/40/88/bf/4088bfafbf75b2c1cbb8234d59af99f1.jpg"
+    ],
+    "coordinates": { "lat": -13.1631, "lon": -72.545 }
   }
 ]

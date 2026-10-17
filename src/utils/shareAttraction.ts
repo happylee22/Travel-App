@@ -8,7 +8,10 @@ type Attraction = {
   images?: string[];
 };
 
-export const shareAttraction = async (item?: Attraction) => {
+export const shareAttraction = async (
+  item?: Attraction,
+  onReady?: () => void,
+) => {
   const mainImage = item?.images?.[0];
 
   try {
@@ -32,6 +35,7 @@ export const shareAttraction = async (item?: Attraction) => {
     }
 
     console.log("3. Opening share sheet");
+    onReady?.();
     await Share.open({
       title: item.name,
       message: `Check out ${item.name} in ${item.city}!\nDownload the image: ${mainImage}`,

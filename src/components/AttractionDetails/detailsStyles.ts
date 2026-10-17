@@ -70,4 +70,12 @@ export const styles = StyleSheet.create({
     padding: 2,
     marginBottom: 40,
   },
+  shareIndicator: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

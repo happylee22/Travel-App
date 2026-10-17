@@ -4,11 +4,11 @@ export default {
     slug: "Travel-App",
     version: "1.0.0",
     orientation: "portrait",
-    icon: "./assets/images/icon.png",
+    icon: "./assets/images/travelLogo.png",
     scheme: "Travel-App",
     userInterfaceStyle: "automatic",
     ios: {
-      icon: "./assets/expo.icon",
+      icon: "./assets/images/travelLogo.png",
     },
     android: {
       package: "com.happinky.app",
@@ -19,23 +19,26 @@ export default {
       },
       adaptiveIcon: {
         backgroundColor: "#E6F4FE",
-        foregroundImage: "./assets/images/android-icon-foreground.png",
-        backgroundImage: "./assets/images/android-icon-background.png",
-        monochromeImage: "./assets/images/android-icon-monochrome.png",
+        foregroundImage: "./assets/images/travelLogo.png",
+        backgroundImage: "./assets/images/travelLogo.png",
+        monochromeImage: "./assets/images/travelLogo.png",
       },
       predictiveBackGestureEnabled: false,
     },
     web: {
       output: "static",
-      favicon: "./assets/images/favicon.png",
+      favicon: "./assets/images/travelLogo.png",
     },
     plugins: [
       "expo-router",
+      "@clerk/expo",
+      "expo-secure-store",
+
       [
         "expo-splash-screen",
         {
           backgroundColor: "#208AEF",
-          image: "./assets/images/splash-icon.png",
+          image: "./assets/images/travelLogo.png",
           imageWidth: 76,
         },
       ],

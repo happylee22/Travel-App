@@ -1,7 +1,9 @@
 import jsonData from "@/components/data/attraction.json";
 import { shareAttraction } from "@/utils/shareAttraction";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { useState } from "react";
 import {
+  ActivityIndicator,
   Image,
   ImageBackground,
   Pressable,
@@ -16,6 +18,7 @@ import TextSection from "../MiddleSectionText/textSection";
 import { styles } from "./detailsStyles";
 
 const AttractionDetails = () => {
+  const [sharing, setSharing] = useState(false);
   const { id } = useLocalSearchParams<{ id: string }>();
   const placeholder = { uri: "https://picsum.photos/400/300" };
   const item = jsonData.find((entry) => entry.id.toString() === id);
@@ -34,7 +37,20 @@ const AttractionDetails = () => {
     latitudeDelta: 0.009,
     longitudeDelta: 0.009,
   };
+  //Share Button Handler
+  const handleSharePress = async () => {
+    try {
+      setSharing(true);
 
+      await shareAttraction(item, () => {
+        setSharing(false);
+      });
+    } catch (error) {
+      console.log("Share failed:", error);
+    } finally {
+      setSharing(false);
+    }
+  };
   //navigation
   const router = useRouter();
   const handleBackPress = () => {
@@ -79,10 +95,17 @@ const AttractionDetails = () => {
         >
           <View style={styles.header}>
             <ButtonsIcons icon="arrow-left" handleBackPress={handleBackPress} />
-            <ButtonsIcons
-              icon="share"
-              handleBackPress={() => shareAttraction(item)}
-            />
+            <Pressable
+              onPress={handleSharePress}
+              disabled={sharing}
+              style={styles.shareIndicator}
+            >
+              {sharing ? (
+                <ActivityIndicator size="small" color="#007AFF" />
+              ) : (
+                <ButtonsIcons icon="share" handleBackPress={handleSharePress} />
+              )}
+            </Pressable>
           </View>
           <Pressable style={styles.footer} onPress={handleGalleryPress}>
             {slicedImages.map((image, index) => (
